@@ -1,6 +1,10 @@
+// import useState() hook to hold form data, useEffect() React hook to make API calls
 import { useState, useEffect } from 'react';
 import './App.css';
+// import axios to fetch data from database
 import axios from 'axios';
+// import <Link> component from React Router library (normally to navigate b/t components ...)
+import { Link } from 'react-router-dom';
 
 function App() {
   // initialize state to hold user's search input
@@ -71,12 +75,12 @@ function App() {
         </div>
         {/* Description of the country*/}
         <div className="description">
-          <p style={{color: "#00b4d8"}}>{country.flags.alt}</p>
+          <p style={{color: "#1d3557"}}>{country.flags.alt}</p>
           <h2>{country.name.common}</h2>
-          <h4>Capital: {country.capital}</h4>
-          <h4>Population: {country.population.toLocaleString()}</h4>
-          <h4>Languages: {Object.values(country.languages || {}).join(', ')}</h4>
-          <h4>Currencies: {Object.values(country.currencies || {}).map((currency) => currency.name).join(', ')}</h4>
+          <h4><b>Capital:</b> <i>{country.capital}</i></h4>
+          <h4>Population: <i>{country.population.toLocaleString()}</i></h4>
+          <h4>Languages: <i>{Object.values(country.languages || {}).join(', ')}</i></h4>
+          <h4>Currencies: <i>{Object.values(country.currencies || {}).map((currency) => currency.name).join(', ')}</i></h4>
         </div>
       </>
     )
@@ -84,11 +88,10 @@ function App() {
 
   return (
     <>
-
+      {/* applying Google Fonts styling to <h1> header tag */}
       <h1 className='snowburst-one-regular'>Country Info</h1>
-
       {/* Search Bar */}
-      <label id="search">
+      <label htmlFor="search-bar">
         <input
           type="text"
           placeholder="Please enter a country"
@@ -97,10 +100,15 @@ function App() {
         />
         <button onClick={() => getData(search)}>Go</button>
       </label>
-
-
+      
       {/* conditional rendering using ternary operator to display country (if it exists and has population property) or loading message */}
       {country && country.population ? loaded() : loading()}
+
+      <footer>
+        {/* normal anchor tags works in React when opening a new tab("_blank") to re-direct
+        but if want the current page to re-direct, it will re-render and loses all previous data */}
+        <a href={"https://restcountries.com/#endpoints-name"} target="_blank" style={{color: "black"}}>API Resource</a>
+      </footer>
     </>
   );
 }

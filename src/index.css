@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* adjust to system's dark color scheme -- auto readjust webpage to dark mode if detected? */
+  color-scheme: dark;
 }
 
 a {
@@ -91,15 +93,36 @@ img{
 
 /* border for the description */
 .description{
-  border: 3xpx solid #535bf2;
+  border: 3px solid #e63946;
   border-radius: 8px;
   padding: 5px;
 }
 
 h1{
-  border: 5px solid #535bf2;
-  border-radius: 8px;
+  /* border: 5px solid #a8dadc;
+  border-radius: 8px; */
+  font-size:xx-large;
+  font-weight: 900;
   padding: 5px;
+  
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa;
+  
+}
+
+h2{
+  border: 5px solid #dda15e;
+  border-radius: 25px;
+  padding: 5px;
+  color: #003566
 }
 
 /* custom styling from Google fonts */
@@ -118,4 +141,16 @@ input{
   font-family: inherit;
   background: linear-gradient(152deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 3.44%);
   width:450px;
+  text-align: center;
 }
+/* Note: focus-visible pseudo-element different from focus as it only show features when panned over via keyboard or assisted technology */
+#search-bar:focus-visible{
+  outline: 2px solid #7b2cbf;
+  background-image: linear-gradient(rgba(52, 58, 64, 0.267) 0 0);
+}
+
+footer{
+  text-align:right;
+  padding:5px;
+}
+
