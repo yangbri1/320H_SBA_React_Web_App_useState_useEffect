@@ -3,9 +3,14 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  const [country, setCountry] = useState(null);  // State to store country data
-  const [search, setSearch] = useState('');      // State for search input
+  // initialize state to hold user's search input
+  const [search, setSearch] = useState('');      
+  // create state to store country's data
+  const [country, setCountry] = useState(null);
 
+  // initialize state to detect whether or not the database shows a picture of the country's coat of arms
+  const [coatOfArms, setCoatOfArms] = useState(false);
+  
   // "async"/"await" pairing to fetch from database
   const getData = async (searchInput) => {
     // try-catch block to catch any potential errors
@@ -25,6 +30,7 @@ function App() {
       else {
         // filter database for the inputted country name
         response = await axios.get(`https://restcountries.com/v3.1/name/${searchInput}`);
+        // Aside: response.data form in axios usually show bulk of data
         // set "country" value to first country in response as sometimes there may be numerous countries sharing similar name (ex. Two Korea's)
         setCountry(response.data[0]); 
       }
@@ -40,6 +46,15 @@ function App() {
     getData(search);  // retrieve data w/ initial value (recall empty at start)
   }, [search]);       // [search] dependencies -- runs when  "search" state change
 
+
+  function coatOfArms(){
+    if(country.coatOfArms.svg){
+      return(country.coatOfArms.svg)
+    }
+    else{
+      return(null);
+    }
+  }
   const loading = () => {
     return(<h1>Loading...</h1>)
   }
@@ -48,17 +63,17 @@ function App() {
     return(
       <>
         {/* Flag & Coat of Arms */}
-        <div className="row">
+        <div className="row" style={{display: "flex", gap: "10px"}}>
           <div className="column">
-            <img src={country.flags.svg} name="flag" alt={`flag of ${country.name.common}`} />
+            <img src={country.flags.svg} id="flag" name="flag" alt={`flag of ${country.name.common}`} />
           </div>
           <div className="column">
-            <img src={country.flags.svg} name="coatofarms" alt={`${country.name.common}'s Coat of Arms`} />
+            <img src={coatOfArms} id="coatOfArms"name="coatOfArms" alt={`${country.name.common}'s Coat of Arms`} />
           </div>
         </div>
         {/* Description of the country*/}
         <div className="description">
-          <p>{country.flags.alt}</p>
+          <p style={{color: "#00b4d8"}}>{country.flags.alt}</p>
           <h2>{country.name.common}</h2>
           <h4>Capital: {country.capital}</h4>
           <h4>Population: {country.population.toLocaleString()}</h4>

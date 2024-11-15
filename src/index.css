@@ -69,20 +69,22 @@ button:focus-visible {
 
 /* .flag{
   color: #90e0ef;
-}
-
-img{
-  display:flexbox;
-  background-size: center;
-  width: 700px;
-  height: 400px;
 } */
 
+img{
+  width: 40%;
+}
+
 .row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 .column {
   flex: 33.33%; /* Adjust the width as needed */
   padding: 5px;
+  
 }
+
+input
