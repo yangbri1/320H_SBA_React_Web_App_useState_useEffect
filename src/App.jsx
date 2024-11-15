@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 
-import { ImageComponent } from './components/ImageComponent.jsx';
-
 function App() {
   // initialize state to hold user's search input
   const [search, setSearch] = useState('');      
@@ -11,8 +9,14 @@ function App() {
   const [country, setCountry] = useState(null);
 
   // initialize state to detect whether or not the database shows a picture of the country's coat of arms
-  const [coatOfArms, setCoatOfArms] = useState(false);
+  // const [coatOfArms, setCoatOfArms] = useState(false);
   
+
+  // function coatOfArms({picture, present}){
+  //   if(!present){
+  //     return("https://tenor.com/view/pato-caminando-cheli-gif-24693863");
+  //   }
+  // }
   // "async"/"await" pairing to fetch from database
   const getData = async (searchInput) => {
     // try-catch block to catch any potential errors
@@ -49,24 +53,24 @@ function App() {
   }, [search]);       // [search] dependencies -- runs when  "search" state change
 
 
-  useEffect(() => {
-    const getCoatOfArms = async() => {
-      try {
-        const res = await fetch(coatOfArms);
-        if(res.ok){
-          setCoatOfArms(true);
-        }
-        else{
-          setCoatOfArms(false);
-        }
+  // useEffect(() => {
+  //   const getCoatOfArms = async() => {
+  //     try {
+  //       const res = await fetch(coatOfArms);
+  //       if(res.ok){
+  //         setCoatOfArms(true);
+  //       }
+  //       else{
+  //         setCoatOfArms(false);
+  //       }
         
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
 
-    getCoatOfArms();
-  }, [coatOfArms]);
+  //   getCoatOfArms();
+  // }, [coatOfArms]);
   
   // function coatOfArms(){
   //   if(country.coatOfArms.svg){
@@ -89,10 +93,10 @@ function App() {
           <div className="column">
             <img src={country.flags.svg} id="flag" name="flag" alt={`flag of ${country.name.common}`} />
           </div>
-          {/* <div className="column">
-            <img src={coatOfArms} id="coatOfArms"name="coatOfArms" alt={`${country.name.common}'s Coat of Arms`} />
-          </div> */}
-          <ImageComponent src="https://tenor.com/view/pato-caminando-cheli-gif-24693863" />
+          <div className="column">
+            <img src={country.coatOfArms && country.coatOfArms.svg ? country.coatOfArms.svg : "https://tenor.com/view/pato-caminando-cheli-gif-24693863"} id="coatOfArms"name="coatOfArms" alt={`${country.name.common}'s Coat of Arms`} />
+          </div>
+          {/* <ImageComponent src="https://tenor.com/view/pato-caminando-cheli-gif-24693863" /> */}
         </div>
         {/* Description of the country*/}
         <div className="description">
@@ -122,7 +126,8 @@ function App() {
         <button onClick={() => getData(search)}>Go</button>
       </label>
 
-      {/* Display country (if it exists and has population) or loading message */}
+
+      {/* conditional rendering using ternary operator to display country (if it exists and has population) or loading message */}
       {country && country.population ? loaded() : loading()}
     </>
   );
