@@ -40,6 +40,35 @@ function App() {
     getData(search);  // retrieve data w/ initial value (recall empty at start)
   }, [search]);       // [search] dependencies -- runs when  "search" state change
 
+  const loading = () => {
+    return(<h1>Loading...</h1>)
+  }
+
+  function loaded(){
+    return(
+      <>
+        {/* Flag & Coat of Arms */}
+        <div className="row">
+          <div className="column">
+            <img src={country.flags.svg} name="flag" alt={`flag of ${country.name.common}`} />
+          </div>
+          <div className="column">
+            <img src={country.flags.svg} name="coatofarms" alt={`${country.name.common}'s Coat of Arms`} />
+          </div>
+        </div>
+        {/* Description of the country*/}
+        <div className="description">
+          <p>{country.flags.alt}</p>
+          <h2>{country.name.common}</h2>
+          <h4>Capital: {country.capital}</h4>
+          <h4>Population: {country.population.toLocaleString()}</h4>
+          <h4>Languages: {Object.values(country.languages || {}).join(', ')}</h4>
+          <h4>Currencies: {Object.values(country.currencies || {}).map((currency) => currency.name).join(', ')}</h4>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <h1>Country Info</h1>
@@ -55,23 +84,8 @@ function App() {
         <button onClick={() => getData(search)}>Go</button>
       </label>
 
-      <div className="name">
-        {/* Display country name or loading message */}
-        {country ? (
-          // `country.name.common` for displaying the country name
-          <>
-            {country.flags.svg}
-            <p>{country.flags.alt}</p>
-            <h3>{country.name.common}</h3>  
-            <h3>{country.capital}</h3>
-            <h3>{country.population}</h3>
-            <h3>{country.languages}</h3>
-            <h3>{country.currencies}</h3>
-          </>
-        ) : (
-          <h3>Loading...</h3>
-        )}
-      </div>
+      {/* Display country (if it exists and has population) or loading message */}
+      {country && country.population ? loaded() : loading()}
     </>
   );
 }
