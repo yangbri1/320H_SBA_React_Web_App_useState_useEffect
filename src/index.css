@@ -5,8 +5,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  /* background-color: #242424; */
+  background: linear-gradient(221deg, rgb(2, 106, 122) 0.00%, rgb(242, 78, 163) 100.00%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -30,12 +30,12 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+/* h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
+} */
 
-button {
+button{
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -71,20 +71,51 @@ button:focus-visible {
   color: #90e0ef;
 } */
 
+/* regulated image size */
 img{
   width: 40%;
 }
 
-.row {
+/* attempt to get the images closer  */
+.row{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 
-.column {
-  flex: 33.33%; /* Adjust the width as needed */
+.column{
+  flex: 33.33%; 
   padding: 5px;
   
 }
 
-input
+/* border for the description */
+.description{
+  border: 3xpx solid #535bf2;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+h1{
+  border: 5px solid #535bf2;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+/* custom styling from Google fonts */
+.snowburst-one-regular {
+  font-family: "Snowburst One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+input{
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(152deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 3.44%);
+  width:450px;
+}

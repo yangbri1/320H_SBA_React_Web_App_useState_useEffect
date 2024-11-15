@@ -8,15 +8,15 @@ function App() {
   // create state to store country's data
   const [country, setCountry] = useState(null);
 
-  // initialize state to detect whether or not the database shows a picture of the country's coat of arms
-  // const [coatOfArms, setCoatOfArms] = useState(false);
-  
+  // create state for time in country -- initial value of state being current system time
+  const [time, setTime] = useState(() => new Date());
 
-  // function coatOfArms({picture, present}){
-  //   if(!present){
-  //     return("https://tenor.com/view/pato-caminando-cheli-gif-24693863");
-  //   }
-  // }
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(newDate());
+    }, 1000);
+  })
+
   // "async"/"await" pairing to fetch from database
   const getData = async (searchInput) => {
     // try-catch block to catch any potential errors
@@ -52,35 +52,6 @@ function App() {
     getData(search);  // retrieve data w/ initial value (recall empty at start)
   }, [search]);       // [search] dependencies -- runs when  "search" state change
 
-
-  // useEffect(() => {
-  //   const getCoatOfArms = async() => {
-  //     try {
-  //       const res = await fetch(coatOfArms);
-  //       if(res.ok){
-  //         setCoatOfArms(true);
-  //       }
-  //       else{
-  //         setCoatOfArms(false);
-  //       }
-        
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
-
-  //   getCoatOfArms();
-  // }, [coatOfArms]);
-  
-  // function coatOfArms(){
-  //   if(country.coatOfArms.svg){
-  //     return(country.coatOfArms.svg)
-  //   }
-  //   else{
-  //     return(null);
-  //   }
-  // }
-
   const loading = () => {
     return(<h1>Loading...</h1>)
   }
@@ -96,7 +67,7 @@ function App() {
           <div className="column">
             <img src={country.coatOfArms && country.coatOfArms.svg ? country.coatOfArms.svg : "https://tenor.com/view/pato-caminando-cheli-gif-24693863"} id="coatOfArms"name="coatOfArms" alt={`${country.name.common}'s Coat of Arms`} />
           </div>
-          {/* <ImageComponent src="https://tenor.com/view/pato-caminando-cheli-gif-24693863" /> */}
+        
         </div>
         {/* Description of the country*/}
         <div className="description">
@@ -113,7 +84,8 @@ function App() {
 
   return (
     <>
-      <h1>Country Info</h1>
+
+      <h1 className='snowburst-one-regular'>Country Info</h1>
 
       {/* Search Bar */}
       <label id="search">
@@ -127,7 +99,7 @@ function App() {
       </label>
 
 
-      {/* conditional rendering using ternary operator to display country (if it exists and has population) or loading message */}
+      {/* conditional rendering using ternary operator to display country (if it exists and has population property) or loading message */}
       {country && country.population ? loaded() : loading()}
     </>
   );
