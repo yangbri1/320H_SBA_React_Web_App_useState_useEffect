@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 
+import { ImageComponent } from './components/ImageComponent.jsx';
+
 function App() {
   // initialize state to hold user's search input
   const [search, setSearch] = useState('');      
@@ -47,14 +49,34 @@ function App() {
   }, [search]);       // [search] dependencies -- runs when  "search" state change
 
 
-  function coatOfArms(){
-    if(country.coatOfArms.svg){
-      return(country.coatOfArms.svg)
-    }
-    else{
-      return(null);
-    }
-  }
+  useEffect(() => {
+    const getCoatOfArms = async() => {
+      try {
+        const res = await fetch(coatOfArms);
+        if(res.ok){
+          setCoatOfArms(true);
+        }
+        else{
+          setCoatOfArms(false);
+        }
+        
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getCoatOfArms();
+  }, [coatOfArms]);
+  
+  // function coatOfArms(){
+  //   if(country.coatOfArms.svg){
+  //     return(country.coatOfArms.svg)
+  //   }
+  //   else{
+  //     return(null);
+  //   }
+  // }
+
   const loading = () => {
     return(<h1>Loading...</h1>)
   }
@@ -67,9 +89,10 @@ function App() {
           <div className="column">
             <img src={country.flags.svg} id="flag" name="flag" alt={`flag of ${country.name.common}`} />
           </div>
-          <div className="column">
+          {/* <div className="column">
             <img src={coatOfArms} id="coatOfArms"name="coatOfArms" alt={`${country.name.common}'s Coat of Arms`} />
-          </div>
+          </div> */}
+          <ImageComponent src="https://tenor.com/view/pato-caminando-cheli-gif-24693863" />
         </div>
         {/* Description of the country*/}
         <div className="description">
