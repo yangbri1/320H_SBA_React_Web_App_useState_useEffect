@@ -6,13 +6,15 @@ import axios from 'axios';
 // import <Link> component from React Router library (normally to navigate b/t components ...)
 // import { Link } from 'react-router-dom';
 
-// import Nav from 'react-bootstrap';
+// import React Bootstrap framework for added styling
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
+// import Button from 'react-bootstrap/Button';
+// import Spinner from 'react-bootstrap/Spinner';
 
-import duckLogo from './assets/duck.svg'
+import duckLogo from './assets/duck.svg';
+import quackLogo from '../public/quack.svg';
+
 function App() {
   // initialize state to hold user's search input
   const [search, setSearch] = useState('');      
@@ -110,7 +112,7 @@ function App() {
           <Navbar.Brand href="#home" style={{color: '#00B8D9'}}>
             <img
               alt="Duck ducks"
-              src={duckLogo}
+              src={quackLogo}
               width="30"
               height="30"
               className="d-inline-block float-start"

@@ -10,8 +10,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@700&family=Moo+Lah+Lah&family=Snowburst+One&display=swap" rel="stylesheet">
     
     <title>Final SBA_320 React Practice</title>
+    <style>
+      /* Keyframes for Wing Flap Animation */
+      @keyframes flap-left-wing {
+          0% { transform: rotate(-30deg); }
+          50% { transform: rotate(-10deg); }
+          100% { transform: rotate(-30deg); }
+      }
+
+      @keyframes flap-right-wing {
+          0% { transform: rotate(30deg); }
+          50% { transform: rotate(10deg); }
+          100% { transform: rotate(30deg); }
+      }
+
+      /* Keyframes for Leg Movement Animation */
+      @keyframes dance-legs {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(5px); }
+          100% { transform: translateY(0); }
+      }
+
+      /* Apply animation to the elements */
+      .left-wing {
+          animation: flap-left-wing 0.5s ease-in-out infinite;
+          transform-origin: center;
+      }
+
+      .right-wing {
+          animation: flap-right-wing 0.5s ease-in-out infinite;
+          transform-origin: center;
+      }
+
+      .left-leg, .right-leg {
+          animation: dance-legs 0.5s ease-in-out infinite;
+      }
+  </style>
   </head>
   <body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <!-- Body -->
+      <ellipse cx="50" cy="60" rx="25" ry="20" fill="yellow" />
+    
+      <!-- Head -->
+      <circle cx="50" cy="35" r="15" fill="yellow" />
+      
+      <!-- Beak -->
+      <polygon points="55,35 65,30 65,40" fill="orange" />
+    
+      <!-- Eyes -->
+      <circle cx="45" cy="30" r="3" fill="black" />
+      <circle cx="55" cy="30" r="3" fill="black" />
+      
+      <!-- Left Wing (appears to be raised) -->
+      <ellipse class="left-wing" cx="30" cy="60" rx="12" ry="8" fill="yellow" transform="rotate(-30, 30, 60)" />
+    
+      <!-- Right Wing (appears to be down) -->
+      <ellipse class="right-wing" cx="70" cy="60" rx="12" ry="8" fill="yellow" transform="rotate(30, 70, 60)" />
+      
+      <!-- Left Leg -->
+      <line class="left-leg" x1="40" y1="80" x2="40" y2="90" stroke="orange" stroke-width="4" />
+      <line class="left-leg" x1="40" y1="90" x2="35" y2="95" stroke="orange" stroke-width="4" />
+      <line class="left-leg" x1="40" y1="90" x2="45" y2="95" stroke="orange" stroke-width="4" />
+    
+      <!-- Right Leg -->
+      <line class="right-leg" x1="60" y1="80" x2="60" y2="90" stroke="orange" stroke-width="4" />
+      <line class="right-leg" x1="60" y1="90" x2="55" y2="95" stroke="orange" stroke-width="4" />
+      <line class="right-leg" x1="60" y1="90" x2="65" y2="95" stroke="orange" stroke-width="4" />
+    </svg>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

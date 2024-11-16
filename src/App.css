@@ -43,3 +43,39 @@
   color: #888;
 }
 
+/* dancing duck animation */
+
+/* Keyframes for Wing Flap Animation */
+@keyframes flap-left-wing {
+  0% { transform: rotate(-30deg); }
+  50% { transform: rotate(-10deg); }
+  100% { transform: rotate(-30deg); }
+}
+
+@keyframes flap-right-wing {
+  0% { transform: rotate(30deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(30deg); }
+}
+
+/* Keyframes for Leg Movement Animation */
+@keyframes dance-legs {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
+/* Apply animation to the elements */
+.left-wing {
+  animation: flap-left-wing 0.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.right-wing {
+  animation: flap-right-wing 0.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.left-leg, .right-leg {
+  animation: dance-legs 0.5s ease-in-out infinite;
+}
