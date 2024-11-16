@@ -10,6 +10,7 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 import duckLogo from './assets/duck.svg'
 function App() {
@@ -90,7 +91,7 @@ function App() {
 
   return (
     <>
-      <Navbar sticky="top" className="bg-body-tertiary">
+      <Navbar id="navbar" sticky="top" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand href="#home">
             <img
@@ -127,7 +128,8 @@ function App() {
       <footer>
         {/* normal anchor tags works in React when opening a new tab("_blank") to re-direct
         but if want the current page to re-direct, it will re-render and loses all previous data */}
-        <Button variant="warning" onClick={"https://restcountries.com/#endpoints-name"} target="_blank">API Resource</Button>
+        <Button variant="link"><a href={"https://restcountries.com/#endpoints-name"} target="_blank">API Resource</a></Button>
+        <Spinner animation="grow" size="sm" />
         {/* <a href={"https://restcountries.com/#endpoints-name"} target="_blank" style={{color: "black"}}>API Resource</a> */}
       </footer>
     </>
