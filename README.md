@@ -84,6 +84,32 @@ Currently, two official plugins are available:
 ### Go back to VS Code IDE
 > * Go to `src` directory then to `App.jsx` 
 > * Delete boilerplate in `return` block
+
+### Begin
+
+> **"Work Top-Down ... focus on hitting the MVP (functionality over form normally ...)". This time there's some emphasis on styling -- perhaps practice to Capstone?**
+
 - - - 
+
 ## $\color{orange}{Acknowledgements}$
-### All used source materals are stored in the "reference" folder of this repo.
+
+### Reference to previous recent labs in lecture 320, warmups and practices from class
+
+### 3rd Party REST Countries API
+ * https://restcountries.com/#endpoints-name
+ * https://restcountries.com/v3.1/all
+
+### Lecture Notes
+ * https://ps-react-curriculum.herokuapp.com/320/7/lesson/
+
+### Styling
+ * https://coolors.co/palettes/popular
+ * https://fonts.google.com/
+ * https://freefrontend.com/css-glow-text-effects/
+ * https://baseline.is/tools/css-gradients/
+
+### .SVG Images (Why not .PNG? .SVG apparently is higher quality here >.> they say)
+ * https://www.svgrepo.com/svg/232027/duck-animal
+ * https://www.svgrepo.com/vectors/duck/
+
+``` *All used source materals are stored in the "reference" folder of this repo.* ```
