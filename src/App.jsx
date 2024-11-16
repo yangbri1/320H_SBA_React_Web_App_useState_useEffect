@@ -54,7 +54,8 @@ function App() {
   // useEffect() React hook to fetch data on initial render
   useEffect(() => {
     getData(search);  // retrieve data w/ initial value (recall empty at start)
-  }, [search]);       // [search] dependencies -- runs when  "search" state change
+  }, []);       // [search] dependencies -- runs when "search" state change (in this case per keystroke)
+                // instead we leave list/array [] for dependencies so it will only change upon initial render -- click event later
 
   const loading = () => {
     return(<h1>Loading...</h1>)
