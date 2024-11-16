@@ -112,12 +112,20 @@ function App() {
           <Navbar.Brand href="#home" style={{color: '#00B8D9'}}>
             <img
               alt="Duck ducks"
-              src={quackLogo}
+              src={duckLogo}
               width="30"
               height="30"
               className="d-inline-block float-start"
             />{' '}
             Destination
+            {' '}
+            <img
+              alt="quack quack"
+              src={quackLogo}
+              width="30"
+              height="30"
+              className="d-inline-block float-start"
+            />
           </Navbar.Brand>
         </Container>
       </Navbar>
