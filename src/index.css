@@ -69,15 +69,6 @@ button:focus-visible {
   }
 }
 
-/* .flag{
-  color: #90e0ef;
-} */
-
-/* regulated image size */
-img{
-  width: 40%;
-}
-
 /* attempt to get the images closer  */
 .row{
   display: grid;
@@ -91,6 +82,11 @@ img{
   
 }
 
+/* regulated flag & coat of arms image size */
+.column > img {
+  width: 40%;
+}
+
 /* border for the description */
 .description{
   border: 3px solid #e63946;
@@ -98,13 +94,15 @@ img{
   padding: 5px;
 }
 
+/* gives heading glow effect */
 h1{
   /* border: 5px solid #a8dadc;
   border-radius: 8px; */
   font-size:xx-large;
   font-weight: 900;
   padding: 5px;
-  
+  display:flex;
+  justify-content: center;
   color: #fff;
   text-shadow:
       0 0 7px #fff,
@@ -154,3 +152,9 @@ footer{
   padding:5px;
 }
 
+.duck{
+  width:50px;
+  display: flex;
+  justify-content:left;
+  
+}

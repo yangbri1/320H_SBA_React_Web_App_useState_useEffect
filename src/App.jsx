@@ -6,6 +6,7 @@ import axios from 'axios';
 // import <Link> component from React Router library (normally to navigate b/t components ...)
 import { Link } from 'react-router-dom';
 
+import duckLogo from './assets/duck.svg'
 function App() {
   // initialize state to hold user's search input
   const [search, setSearch] = useState('');      
@@ -89,6 +90,10 @@ function App() {
 
   return (
     <>
+      <a href="https://www.svgrepo.com/vectors/duck/" target="_blank">
+        <img src={duckLogo} className="duck" alt="Duck ducks" />
+      </a>
+      
       {/* applying Google Fonts styling to <h1> header tag */}
       <h1 className='snowburst-one-regular'>Country Info</h1>
       {/* Search Bar */}
