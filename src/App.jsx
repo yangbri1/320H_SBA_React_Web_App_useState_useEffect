@@ -4,7 +4,12 @@ import './App.css';
 // import axios to fetch data from database
 import axios from 'axios';
 // import <Link> component from React Router library (normally to navigate b/t components ...)
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+
+// import Nav from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 
 import duckLogo from './assets/duck.svg'
 function App() {
@@ -16,11 +21,6 @@ function App() {
   // create state for time in country -- initial value of state being current system time
   const [time, setTime] = useState(() => new Date());
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(newDate());
-    }, 1000);
-  })
 
   // "async"/"await" pairing to fetch from database
   const getData = async (searchInput) => {
@@ -90,9 +90,23 @@ function App() {
 
   return (
     <>
-      <a href="https://www.svgrepo.com/vectors/duck/" target="_blank">
+      <Navbar sticky="top" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Brand href="#home">
+            <img
+              alt="Duck ducks"
+              src={duckLogo}
+              width="30"
+              height="30"
+              className="d-inline-block float-start"
+            />{' '}
+            Destination
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+      {/* <a href="https://www.svgrepo.com/vectors/duck/" target="_blank">
         <img src={duckLogo} className="duck" alt="Duck ducks" />
-      </a>
+      </a> */}
       
       {/* applying Google Fonts styling to <h1> header tag */}
       <h1 className='snowburst-one-regular'>Country Info</h1>
@@ -113,7 +127,8 @@ function App() {
       <footer>
         {/* normal anchor tags works in React when opening a new tab("_blank") to re-direct
         but if want the current page to re-direct, it will re-render and loses all previous data */}
-        <a href={"https://restcountries.com/#endpoints-name"} target="_blank" style={{color: "black"}}>API Resource</a>
+        <Button variant="warning" onClick={"https://restcountries.com/#endpoints-name"} target="_blank">API Resource</Button>
+        {/* <a href={"https://restcountries.com/#endpoints-name"} target="_blank" style={{color: "black"}}>API Resource</a> */}
       </footer>
     </>
   );
