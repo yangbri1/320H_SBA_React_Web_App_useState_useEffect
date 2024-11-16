@@ -27,7 +27,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -44,7 +44,7 @@ button{
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #dde030;
+  background-color: #F8BBD0;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -89,9 +89,10 @@ button:focus-visible {
 
 /* border for the description */
 .description{
-  border: 3px solid #e63946;
+  border: 3px solid #E0E0E0 ;
   border-radius: 8px;
   padding: 5px;
+  text-align:center;
 }
 
 /* gives heading glow effect */
@@ -117,10 +118,10 @@ h1{
 }
 
 h2{
-  border: 5px solid #dda15e;
-  border-radius: 25px;
+  /* border: 5px solid #FF6F61;
+  border-radius: 25px; */
   padding: 5px;
-  color: #003566
+  color: #FF6F61
 }
 
 /* custom styling from Google fonts */
@@ -159,3 +160,25 @@ footer{
   
 }
 
+.map-btn{
+  /* display:flex;
+  justify-content:left; */
+  display: flex;
+  gap: 10px; /* Optional: adds space between buttons */
+}
+
+.api-btn{
+  /* display: flex; */
+  justify-content: right;
+  gap: 10px; /
+}
+
+.info-btn {
+  position: fixed; /* Fixes buttons at the bottom */
+  bottom: 0;
+  /* left: 0; */
+  right: 0;
+  display: flex;
+  justify-content: space-between; /* Places buttons at opposite ends */
+  padding: 10px 20px; /* Optional, for spacing */
+}

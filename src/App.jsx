@@ -78,12 +78,25 @@ function App() {
         </div>
         {/* Description of the country*/}
         <div className="description">
-          <p style={{color: "#1d3557"}}>{country.flags.alt}</p>
+          <p style={{color: "#333333"}}><i>{country.flags.alt}</i></p>
           <h2>{country.name.common}</h2>
           <h4><b>Capital:</b> <i>{country.capital}</i></h4>
           <h4>Population: <i>{country.population.toLocaleString()}</i></h4>
           <h4>Languages: <i>{Object.values(country.languages || {}).join(', ')}</i></h4>
           <h4>Currencies: <i>{Object.values(country.currencies || {}).map((currency) => currency.name).join(', ')}</i></h4>
+        </div>
+        <div className="info-btn">
+          <footer>
+            {/* button re-direct to map of searched country */}
+            <button className="map-btn">
+              <a href={country.maps.openStreetMaps} target="_blank" style={{color: "black"}}>Map</a>
+            </button>
+            {/* normal anchor tags works in React when opening a new tab("_blank") to re-direct
+            but if want the current page to re-direct, it will re-render and loses all previous data */}
+            <button className="api-btn">
+              <a href={"https://restcountries.com/#endpoints-name"} target="_blank">API Resource</a>
+            </button>
+          </footer>
         </div>
       </>
     )
@@ -91,9 +104,10 @@ function App() {
 
   return (
     <>
+    {/* React Bootstrap Navbar */}
       <Navbar id="navbar" sticky="top" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#home" style={{color: '#00B8D9'}}>
             <img
               alt="Duck ducks"
               src={duckLogo}
@@ -125,13 +139,6 @@ function App() {
       {/* conditional rendering using ternary operator to display country (if it exists and has population property) or loading message */}
       {country && country.population ? loaded() : loading()}
 
-      <footer>
-        {/* normal anchor tags works in React when opening a new tab("_blank") to re-direct
-        but if want the current page to re-direct, it will re-render and loses all previous data */}
-        <Button variant="link"><a href={"https://restcountries.com/#endpoints-name"} target="_blank">API Resource</a></Button>
-        <Spinner animation="grow" size="sm" />
-        {/* <a href={"https://restcountries.com/#endpoints-name"} target="_blank" style={{color: "black"}}>API Resource</a> */}
-      </footer>
     </>
   );
 }
